@@ -16,11 +16,21 @@
   justify-content: space-between;
 }
 
-.logo {
+.block-search,
+.search-results {
+  width: 362px;
+}
+
+.search-title {
+  height: 30px;
+  padding: 5px 12px;
+  font-size: 1.4rem;
+  line-height: 20px;
+  font-weight: 600;
+  color: rgba(22, 24, 35, 0.5);
 }
 
 .block-search {
-  width: 342px;
   height: 46px;
   border-radius: var(--search-border-radius);
   background-color: rgba(22, 24, 35, 0.06);
@@ -87,4 +97,10 @@
   img {
     margin-top: 4px;
   }
+}
+
+.actions {
+  width: 265px;
+  height: 100%;
+  background-color: red;
 }
