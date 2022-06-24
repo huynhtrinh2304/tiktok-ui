@@ -8,7 +8,8 @@
 }
 
 :root {
-  --primary: #fe2c55;
+  --white: rgba(255, 255, 255, 1);
+  --primary: rgba(254, 44, 85, 1);
   --black: #000;
   --text-color: #333;
 
@@ -38,4 +39,36 @@ input,
 a [href] {
   color: var(--text-color);
   text-decoration: none;
+}
+
+.mr-2 {
+  margin-right: 4px;
+}
+
+.ml-2 {
+  margin-left: 4px;
+}
+
+.mr-4 {
+  margin-right: 8px;
+}
+
+.ml-4 {
+  margin-left: 8px;
+}
+
+.mt-2 {
+  margin-top: 4px;
+}
+
+.mb-2 {
+  margin-bottom: 4px;
+}
+
+.mt-4 {
+  margin-top: 8px;
+}
+
+.mb-4 {
+  margin-bottom: 8px;
 }
