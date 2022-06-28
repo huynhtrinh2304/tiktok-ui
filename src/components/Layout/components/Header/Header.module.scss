@@ -100,4 +100,18 @@
 }
 
 .actions {
+  display: flex;
+  align-items: center;
+}
+
+.more-btn {
+  padding: 2px 4px;
+  cursor: pointer;
+  margin-left: 16px;
+  background: transparent;
+}
+
+.more-icon {
+  width: 2rem;
+  height: 2rem;
 }

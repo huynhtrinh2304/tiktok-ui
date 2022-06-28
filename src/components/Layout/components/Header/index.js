@@ -1,21 +1,45 @@
 import { useState, useEffect, useRef } from 'react';
 import classNames from 'classnames/bind';
+
 //Tippy
 import Tippy from '@tippyjs/react/headless';
+
 //Fontawesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleXmark, faSpinner, faPlus } from '@fortawesome/free-solid-svg-icons';
-
+import { faCircleXmark, faSpinner, faPlus, faLanguage, faKeyboard } from '@fortawesome/free-solid-svg-icons';
+import { faCircleQuestion } from '@fortawesome/free-regular-svg-icons';
 import styles from './Header.module.scss';
+
 // import icon images from folder assets
 import images from '~/assets/images';
+import icons from '~/assets/icon';
 
 //Import component
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import AccountItem from '~/components/AccountItem';
 import Button from '~/components/Button';
+import Menu from '~/components/Popper/Menu';
 
 const cx = classNames.bind(styles);
+
+const MENU_ITEM = [
+  {
+    icon: <FontAwesomeIcon className="mr-4 size-icon" icon={faLanguage} />,
+    title: 'Tiếng việt',
+    type: 'tippy',
+  },
+  {
+    icon: <FontAwesomeIcon className="mr-4 size-icon" icon={faCircleQuestion} />,
+    title: 'Phản hồi và trợ giúp',
+    type: 'link',
+    href: 'https://www.tiktok.com/feedback',
+  },
+  {
+    icon: <FontAwesomeIcon className="mr-4 size-icon" icon={faKeyboard} />,
+    title: 'Phím tắt trên bàn phím',
+    type: 'popup',
+  },
+];
 
 function Header() {
   const iconSearchRef = useRef(null);
@@ -56,7 +80,7 @@ function Header() {
         <img src={images.logo} alt="TikTok" />
 
         <Tippy
-          interactive="top-start"
+          interactive
           render={(attrs) => (
             <div className={cx('search-results')} tabIndex="-1" {...attrs}>
               <PopperWrapper>
@@ -103,6 +127,12 @@ function Header() {
           <Button primary medium>
             Sign in
           </Button>
+
+          <Menu items={MENU_ITEM}>
+            <button className={cx('more-btn')}>
+              <img className={cx('more-icon')} src={icons.more_icon} />
+            </button>
+          </Menu>
         </div>
       </div>
     </header>

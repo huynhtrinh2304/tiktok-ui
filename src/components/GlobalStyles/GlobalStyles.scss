@@ -36,9 +36,10 @@ input,
   border: none;
 }
 
-a [href] {
+a {
   color: var(--text-color);
   text-decoration: none;
+  display: block;
 }
 
 .mr-2 {
@@ -71,4 +72,9 @@ a [href] {
 
 .mb-4 {
   margin-bottom: 8px;
+}
+
+.size-icon {
+  width: 20px;
+  height: 20px;
 }

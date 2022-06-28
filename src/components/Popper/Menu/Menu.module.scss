@@ -1,0 +1,18 @@
+.content {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+  min-width: 223px;
+  list-style: none;
+  font-family: 'IBM Plex Sans', ProximaNova, Arial, Tahoma, PingFangSC, sans-serif;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 10px 16px;
+  &:hover {
+    background: rgba(22, 24, 35, 0.03);
+  }
+}
