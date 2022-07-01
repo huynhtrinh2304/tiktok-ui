@@ -6,7 +6,14 @@ import Tippy from '@tippyjs/react/headless';
 
 //Fontawesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleXmark, faSpinner, faPlus, faLanguage, faKeyboard } from '@fortawesome/free-solid-svg-icons';
+import {
+  faCircleXmark,
+  faSpinner,
+  faPlus,
+  faLanguage,
+  faKeyboard,
+  faAngleLeft,
+} from '@fortawesome/free-solid-svg-icons';
 import { faCircleQuestion } from '@fortawesome/free-regular-svg-icons';
 import styles from './Header.module.scss';
 
@@ -26,28 +33,50 @@ const MENU_ITEM = [
   {
     icon: <FontAwesomeIcon className="mr-4 size-icon" icon={faLanguage} />,
     title: 'Tiếng việt',
-    type: 'tippy',
+    children: {
+      title: 'Language',
+      data: [
+        {
+          code: 'en',
+          title: 'English',
+          children: {
+            title: 'Language1',
+            data: [
+              {
+                code: 'en1',
+                title: 'English1',
+              },
+              {
+                code: 'en2',
+                title: 'English2',
+              },
+            ],
+          },
+        },
+        {
+          code: 'vi',
+          title: 'Tiếng việt',
+        },
+      ],
+    },
   },
   {
     icon: <FontAwesomeIcon className="mr-4 size-icon" icon={faCircleQuestion} />,
     title: 'Phản hồi và trợ giúp',
-    type: 'link',
     href: 'https://www.tiktok.com/feedback',
   },
   {
     icon: <FontAwesomeIcon className="mr-4 size-icon" icon={faKeyboard} />,
     title: 'Phím tắt trên bàn phím',
-    type: 'popup',
   },
 ];
 
 function Header() {
   const iconSearchRef = useRef(null);
   const [valueInput, setValueInput] = useState('');
-  const [searchResult, setSearchResult] = useState([]);
 
   // Set show and hide Tippy
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState(false);
   const show = () => setVisible(true);
   const hide = () => setVisible(false);
 
@@ -56,10 +85,7 @@ function Header() {
     handleBoldIconSearch(valueInput);
   }, [valueInput]);
 
-  useEffect(() => {
-    setTimeout(() => setSearchResult([1, 2, 3, 4]), 0);
-  }, []);
-
+  // Handle
   const handleChangeInput = (e) => {
     setValueInput(e.target.value);
   };
@@ -74,6 +100,10 @@ function Header() {
 
   const handleClearInput = () => setValueInput('');
 
+  const handleChangeMenuItem = (menuItem) => {
+    console.log(menuItem);
+  };
+
   return (
     <header className={cx('wrapper')}>
       <div className={cx('inner')}>
@@ -81,6 +111,8 @@ function Header() {
 
         <Tippy
           interactive
+          visible={false}
+          // onClickOutside={hide}
           render={(attrs) => (
             <div className={cx('search-results')} tabIndex="-1" {...attrs}>
               <PopperWrapper>
@@ -92,12 +124,10 @@ function Header() {
               </PopperWrapper>
             </div>
           )}
-          visible={visible}
-          onClickOutside={hide}
         >
           <div className={cx('block-search')}>
             <input
-              onFocus={() => setVisible(true)}
+              // onFocus={() => show()}
               value={valueInput}
               onChange={handleChangeInput}
               placeholder="Search accounts and videos"
@@ -128,7 +158,7 @@ function Header() {
             Sign in
           </Button>
 
-          <Menu items={MENU_ITEM}>
+          <Menu items={MENU_ITEM} onChange={handleChangeMenuItem}>
             <button className={cx('more-btn')}>
               <img className={cx('more-icon')} src={icons.more_icon} />
             </button>
