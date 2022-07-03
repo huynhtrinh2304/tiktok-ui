@@ -9,6 +9,8 @@ import { Wrapper as PopperWrapper } from '~/components/Popper';
 import MenuItem from './MenuItem';
 import Header from './Header';
 
+import icons from '~/assets/icon';
+
 const cx = classNames.bind(styles);
 
 const defaultFn = () => {};
@@ -39,11 +41,14 @@ function Menu({ children, items = [], onChange = defaultFn }) {
 
   return (
     <Tippy
+      visible
+      offset={[10, 13]}
       delay={[0, 700]}
       interactive
       placement="bottom-end"
       render={(attrs) => (
         <div className={cx('content')} tabIndex="-1" {...attrs}>
+          <img className={cx('arrow-tippy')} src={icons.arrow_tippy} alt={'icon'} />
           <PopperWrapper>
             {history.length > 1 && (
               <Header
@@ -57,6 +62,7 @@ function Menu({ children, items = [], onChange = defaultFn }) {
           </PopperWrapper>
         </div>
       )}
+      onHide={() => setHistory((prev) => prev.slice(0, 1))}
     >
       {children}
     </Tippy>

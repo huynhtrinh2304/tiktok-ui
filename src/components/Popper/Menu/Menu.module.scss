@@ -11,10 +11,17 @@
   display: flex;
   align-items: center;
   cursor: pointer;
+  font-weight: 500;
+  font-size: 16px;
   padding: 10px 16px;
+  color: #161823;
   &:hover {
     background: rgba(22, 24, 35, 0.03);
   }
+}
+
+.separator {
+  border-top: 1px solid rgba(22, 24, 35, 0.12);
 }
 
 .container-list-language {
@@ -39,4 +46,13 @@
   cursor: pointer;
   color: rgba(22, 24, 35, 1);
   background-color: rgba(255, 255, 255, 1);
+}
+
+.arrow-tippy {
+  right: 15px;
+  display: block;
+  width: 24px;
+  height: 8px;
+  position: absolute;
+  top: -8px;
 }

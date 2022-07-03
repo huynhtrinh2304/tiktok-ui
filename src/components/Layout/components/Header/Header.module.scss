@@ -106,10 +106,32 @@
   align-items: center;
 }
 
+.message,
+.inbox {
+  width: var(--thirty-two-px);
+  height: var(--thirty-two-px);
+  font-size: 22px;
+  background-color: #fff;
+  margin-left: 16px;
+  cursor: pointer;
+}
+
+.inbox {
+  margin-top: 3px;
+}
+
+.user-avatar {
+  width: var(--thirty-two-px);
+  height: var(--thirty-two-px);
+  margin-left: 24px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
 .more-btn {
   padding: 2px 4px;
   cursor: pointer;
-  margin-left: 16px;
+  margin-left: 1.6rem;
   display: inline-block;
   background: transparent;
 }
