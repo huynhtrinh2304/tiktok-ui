@@ -64,7 +64,7 @@ function Menu({ children, items = [], onChange = defaultFn }) {
       )}
       onHide={() => setHistory((prev) => prev.slice(0, 1))}
     >
-      {children}
+      <div className={cx('block')}>{children}</div>
     </Tippy>
   );
 }

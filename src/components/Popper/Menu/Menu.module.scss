@@ -4,14 +4,13 @@
   line-height: 22px;
   min-width: 223px;
   list-style: none;
-  font-family: 'IBM Plex Sans', ProximaNova, Arial, Tahoma, PingFangSC, sans-serif;
 }
 
 .item {
   display: flex;
   align-items: center;
   cursor: pointer;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 16px;
   padding: 10px 16px;
   color: #161823;
@@ -55,4 +54,8 @@
   height: 8px;
   position: absolute;
   top: -8px;
+}
+
+.block {
+  display: flex;
 }

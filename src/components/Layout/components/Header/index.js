@@ -8,16 +8,8 @@ import 'tippy.js/dist/tippy.css';
 
 //Fontawesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faCircleXmark,
-  faSpinner,
-  faPlus,
-  faLanguage,
-  faKeyboard,
-  faCoins,
-  faArrowRightToBracket,
-} from '@fortawesome/free-solid-svg-icons';
-import { faCircleQuestion, faMessage, faPaperPlane, faSun, faUser } from '@fortawesome/free-regular-svg-icons';
+import { faCircleXmark, faSpinner, faPlus, faLanguage, faArrowRightToBracket } from '@fortawesome/free-solid-svg-icons';
+import { faCircleQuestion, faUser } from '@fortawesome/free-regular-svg-icons';
 import styles from './Header.module.scss';
 
 // import icon images from folder assets
@@ -29,12 +21,16 @@ import { Wrapper as PopperWrapper } from '~/components/Popper';
 import AccountItem from '~/components/AccountItem';
 import Button from '~/components/Button';
 import Menu from '~/components/Popper/Menu';
+import Image from '~/components/Image';
+
+// Icon component
+import { MessageIcon, InboxIcon, CoinTikTokIcon, SettingIcon, KeyboardIcon } from '~/components/Icons';
 
 const cx = classNames.bind(styles);
 
 const MENU_ITEM = [
   {
-    icon: <FontAwesomeIcon className="mr-4 size-icon" icon={faLanguage} />,
+    icon: <FontAwesomeIcon className="size-icon" icon={faLanguage} />,
     title: 'Tiếng việt',
     children: {
       title: 'Language',
@@ -51,12 +47,12 @@ const MENU_ITEM = [
     },
   },
   {
-    icon: <FontAwesomeIcon className="mr-4 size-icon" icon={faCircleQuestion} />,
+    icon: <FontAwesomeIcon className="size-icon" icon={faCircleQuestion} />,
     title: 'Phản hồi và trợ giúp',
     href: 'https://www.tiktok.com/feedback',
   },
   {
-    icon: <FontAwesomeIcon className="mr-4 size-icon" icon={faKeyboard} />,
+    icon: <KeyboardIcon className="size-icon" />,
     title: 'Phím tắt trên bàn phím',
   },
 ];
@@ -98,20 +94,20 @@ function Header() {
 
   const userMenu = [
     {
-      icon: <FontAwesomeIcon className="mr-4 size-icon" icon={faUser} />,
+      icon: <FontAwesomeIcon className="size-icon" icon={faUser} />,
       title: 'View profile',
     },
     {
-      icon: <FontAwesomeIcon className="mr-4 size-icon" icon={faCoins} />,
+      icon: <CoinTikTokIcon className="size-icon" />,
       title: 'Get coins',
     },
     {
-      icon: <FontAwesomeIcon className="mr-4 size-icon" icon={faSun} />,
+      icon: <SettingIcon className="size-icon" />,
       title: 'Settings',
     },
     ...MENU_ITEM,
     {
-      icon: <FontAwesomeIcon className="mr-4 size-icon" icon={faArrowRightToBracket} />,
+      icon: <FontAwesomeIcon className="size-icon" icon={faArrowRightToBracket} />,
       title: 'Log out',
       separator: true,
     },
@@ -163,19 +159,19 @@ function Header() {
 
         <div className={cx('actions')}>
           <Button btn_upload>
-            <FontAwesomeIcon className="mr-4" icon={faPlus} />
+            <FontAwesomeIcon className="" icon={faPlus} />
             <span>Upload</span>
           </Button>
           {currentUser ? (
-            <div>
+            <div className={cx('block-icons')}>
               <Tippy className={cx('tippy-custom')} delay={[0, 200]} content="Message" placement="bottom">
                 <button className={cx('message')}>
-                  <FontAwesomeIcon icon={faPaperPlane} />
+                  <MessageIcon width="2.6rem" height="2.6rem" />
                 </button>
               </Tippy>
               <Tippy delay={[0, 200]} content="Inbox" placement="bottom">
                 <button className={cx('inbox')}>
-                  <FontAwesomeIcon icon={faMessage} />
+                  <InboxIcon width="3.3rem" height="3.3rem" />
                 </button>
               </Tippy>
             </div>
@@ -189,7 +185,7 @@ function Header() {
 
           <Menu items={currentUser ? userMenu : MENU_ITEM} onChange={handleChangeMenuItem}>
             {currentUser ? (
-              <img
+              <Image
                 src="https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-aiso/65d3c6b1d1e205c75536ccf1f26d552d~c5_100x100.jpeg?x-expires=1656954000&x-signature=YLjYlY4qWwaz83q96AJqocOJYCY%3D"
                 className={cx('user-avatar')}
                 alt="HVT"

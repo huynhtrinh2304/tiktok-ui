@@ -12,7 +12,7 @@ function MenuItem({ data, onClick }) {
   return (
     <div className={classes} onClick={onClick}>
       {data.icon}
-      <span>{data.title}</span>
+      <span className="ml-4">{data.title}</span>
     </div>
   );
 }

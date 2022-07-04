@@ -4,8 +4,7 @@
   border: 1px solid transparent;
   background-color: var(--white);
   user-select: none;
-  font-family: 'IBM Plex Sans', 'ProximaNova', 'Arial', 'Tahoma', 'PingFangSC', ' sans-serif';
-
+  font-weight: 600;
   + .wrapper {
     margin-left: 10px;
   }
@@ -55,7 +54,6 @@
   font-weight: 600;
   padding: 6px 8px;
   width: 100%;
-  font-family: 'SofiaPro', 'PingFangSC', 'sans-serif';
 }
 
 .btn_upload {
@@ -63,12 +61,11 @@
   min-height: 36px;
   padding: 0 16px;
   border-radius: 2px;
-  font-weight: 700;
+  font-weight: 600;
   align-items: center;
   font-size: 16px;
   line-height: 22px;
   border: 1px solid rgba(22, 24, 35, 0.12);
-  font-family: 'IBM Plex Sans', ProximaNova, Arial, Tahoma, PingFangSC, sans-serif;
 }
 
 .btn_rounded {
@@ -84,7 +81,6 @@
   border-color: rgba(22, 24, 35, 0.12);
   background-color: rgba(255, 255, 255, 1);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-  font-family: 'IBM Plex Sans', ProximaNova, Arial, Tahoma, PingFangSC, sans-serif;
 
   &:hover {
     border-color: rgba(22, 24, 35, 0.2);

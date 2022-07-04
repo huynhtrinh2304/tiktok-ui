@@ -106,18 +106,17 @@
   align-items: center;
 }
 
+.block-icons {
+  display: flex;
+  align-items: center;
+}
 .message,
 .inbox {
   width: var(--thirty-two-px);
   height: var(--thirty-two-px);
-  font-size: 22px;
   background-color: #fff;
   margin-left: 16px;
   cursor: pointer;
-}
-
-.inbox {
-  margin-top: 3px;
 }
 
 .user-avatar {
