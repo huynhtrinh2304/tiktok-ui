@@ -1,14 +1,13 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState } from 'react';
 import classNames from 'classnames/bind';
 
 //HeadlessTippy
 import Tippy from '@tippyjs/react';
-import HeadlessTippy from '@tippyjs/react/headless';
 import 'tippy.js/dist/tippy.css';
 
 //Fontawesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleXmark, faSpinner, faPlus, faLanguage, faArrowRightToBracket } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faLanguage, faArrowRightToBracket } from '@fortawesome/free-solid-svg-icons';
 import { faCircleQuestion, faUser } from '@fortawesome/free-regular-svg-icons';
 import styles from './Header.module.scss';
 
@@ -17,17 +16,15 @@ import images from '~/assets/images';
 import icons from '~/assets/icon';
 
 //Import component
-import { Wrapper as PopperWrapper } from '~/components/Popper';
-import AccountItem from '~/components/AccountItem';
 import Button from '~/components/Button';
 import Menu from '~/components/Popper/Menu';
 import Image from '~/components/Image';
+import Search from '../Search';
 
 // Icon component
 import { MessageIcon, InboxIcon, CoinTikTokIcon, SettingIcon, KeyboardIcon } from '~/components/Icons';
 
 const cx = classNames.bind(styles);
-
 const MENU_ITEM = [
   {
     icon: <FontAwesomeIcon className="size-icon" icon={faLanguage} />,
@@ -59,34 +56,7 @@ const MENU_ITEM = [
 
 function Header() {
   const currentUser = true;
-
-  const iconSearchRef = useRef(null);
-  const [valueInput, setValueInput] = useState('');
-
-  // Set show and hide Tippy
-  const [visible, setVisible] = useState(false);
-  const show = () => setVisible(true);
-  const hide = () => setVisible(false);
-
-  // Use check valueInput.lenght > 0 and bold icon search
-  useEffect(() => {
-    handleBoldIconSearch(valueInput);
-  }, [valueInput]);
-
-  // Handle
-  const handleChangeInput = (e) => {
-    setValueInput(e.target.value);
-  };
-
-  const handleBoldIconSearch = (value) => {
-    if (value.length > 0) {
-      iconSearchRef.current.src = images.search_icon_bold;
-    } else {
-      iconSearchRef.current.src = images.search_icon;
-    }
-  };
-
-  const handleClearInput = () => setValueInput('');
+  console.log('headr');
 
   const handleChangeMenuItem = (menuItem) => {
     console.log(menuItem);
@@ -118,48 +88,11 @@ function Header() {
       <div className={cx('inner')}>
         <img src={images.logo} alt="TikTok" />
 
-        <HeadlessTippy
-          interactive
-          visible={false}
-          // onClickOutside={hide}
-          render={(attrs) => (
-            <div className={cx('search-results')} tabIndex="-1" {...attrs}>
-              <PopperWrapper>
-                <h4 className={cx('search-title')}>Accounts</h4>
-                <AccountItem />
-                <AccountItem />
-                <AccountItem />
-                <AccountItem />
-              </PopperWrapper>
-            </div>
-          )}
-        >
-          <div className={cx('block-search')}>
-            <input
-              // onFocus={() => show()}
-              value={valueInput}
-              onChange={handleChangeInput}
-              placeholder="Search accounts and videos"
-              spellCheck={false}
-            ></input>
-
-            <button className={cx('clear')} onClick={handleClearInput}>
-              <FontAwesomeIcon icon={faCircleXmark} />
-            </button>
-
-            <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />
-
-            <span className={cx('splitter')}></span>
-
-            <button className={cx('search-btn')}>
-              <img ref={iconSearchRef} src={images.search_icon} alt="Search" />
-            </button>
-          </div>
-        </HeadlessTippy>
+        <Search />
 
         <div className={cx('actions')}>
           <Button btn_upload>
-            <FontAwesomeIcon className="" icon={faPlus} />
+            <FontAwesomeIcon className="mr-4" icon={faPlus} />
             <span>Upload</span>
           </Button>
           {currentUser ? (

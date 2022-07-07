@@ -4,12 +4,14 @@ import { faCircleCheck } from '@fortawesome/free-solid-svg-icons';
 
 import styles from './AccountItem.module.scss';
 
+import Image from '~/components/Image';
+
 const cx = classNames.bind(styles);
 
 function AccountItem() {
   return (
     <div className={cx('wrapper')}>
-      <img
+      <Image
         className={cx('avatar')}
         src="https://www.shareicon.net/data/128x128/2016/05/29/772559_user_512x512.png"
         alt="Demo"
