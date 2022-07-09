@@ -4,6 +4,8 @@ import classNames from 'classnames/bind';
 import HeadlessTippy from '@tippyjs/react/headless';
 import 'tippy.js/dist/tippy.css';
 
+import * as searchService from '~/apiService/searchService';
+
 //Fontawesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
@@ -32,7 +34,6 @@ function Search() {
       setSearchResult([]);
       return;
     }
-    setLoading(true);
     fetchApiSearchUser();
   }, [debounced]);
 
@@ -46,16 +47,11 @@ function Search() {
     setShowResult(false);
   };
 
-  const fetchApiSearchUser = () => {
-    fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(debounced)}&type=less`)
-      .then((res) => res.json())
-      .then((res) => {
-        setSearchResult(res.data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        setLoading(false);
-      });
+  const fetchApiSearchUser = async () => {
+    setLoading(true);
+    const searchResult = await searchService.search(debounced);
+    setSearchResult(searchResult);
+    setLoading(false);
   };
 
   return (
