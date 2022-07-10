@@ -1,5 +1,5 @@
-import { useState } from 'react';
 import classNames from 'classnames/bind';
+import { Link } from 'react-router-dom';
 
 //HeadlessTippy
 import Tippy from '@tippyjs/react';
@@ -23,6 +23,9 @@ import Search from '../Search';
 
 // Icon component
 import { MessageIcon, InboxIcon, CoinTikTokIcon, SettingIcon, KeyboardIcon } from '~/components/Icons';
+
+//routes config
+import routesConfig from '~/config/routes';
 
 const cx = classNames.bind(styles);
 const MENU_ITEM = [
@@ -55,7 +58,7 @@ const MENU_ITEM = [
 ];
 
 function Header() {
-  const currentUser = true;
+  const currentUser = false;
 
   const handleChangeMenuItem = (menuItem) => {
     console.log(menuItem);
@@ -85,7 +88,9 @@ function Header() {
   return (
     <header className={cx('wrapper')}>
       <div className={cx('inner')}>
-        <img src={images.logo} alt="TikTok" />
+        <Link to={routesConfig.home} className={cx('logo-link')}>
+          <img src={images.logo} alt="TikTok" />
+        </Link>
 
         <Search />
 

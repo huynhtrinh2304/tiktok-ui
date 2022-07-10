@@ -45,6 +45,7 @@ function Menu({ children, items = [], onChange = defaultFn }) {
       delay={[0, 700]}
       interactive
       placement="bottom-end"
+      hideOnClick={false}
       render={(attrs) => (
         <div className={cx('content')} tabIndex="-1" {...attrs}>
           <img className={cx('arrow-tippy')} src={icons.arrow_tippy} alt={'icon'} />

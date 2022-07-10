@@ -30,7 +30,7 @@ function Search() {
 
   // search user
   useEffect(() => {
-    if (!debounced.trim()) {
+    if (!debounced) {
       setSearchResult([]);
       return;
     }
@@ -54,6 +54,12 @@ function Search() {
     setLoading(false);
   };
 
+  const handleChangeInputSearch = (e) => {
+    if (!e.target.value.startsWith(' ')) {
+      setSearchValue(e.target.value);
+    }
+  };
+
   return (
     <HeadlessTippy
       interactive
@@ -75,7 +81,7 @@ function Search() {
           ref={inputSearchRef}
           value={searchValue}
           onFocus={() => setShowResult(true)}
-          onChange={(e) => setSearchValue(e.target.value)}
+          onChange={(e) => handleChangeInputSearch(e)}
           placeholder="Search accounts and videos"
         />
 
@@ -89,7 +95,7 @@ function Search() {
 
         <span className={cx('splitter')}></span>
 
-        <button className={cx('search-btn')}>
+        <button className={cx('search-btn')} onMouseDown={(e) => e.preventDefault()}>
           <SearchIcon />
         </button>
       </div>
