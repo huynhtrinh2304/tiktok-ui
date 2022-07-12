@@ -93,7 +93,7 @@ function Search() {
             </button>
           )}
 
-          {loading == true && <LoadingIcon className={cx('loading')} />}
+          {loading === true && <LoadingIcon className={cx('loading')} />}
 
           <span className={cx('splitter')}></span>
 
