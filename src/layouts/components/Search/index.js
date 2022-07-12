@@ -4,7 +4,7 @@ import classNames from 'classnames/bind';
 import HeadlessTippy from '@tippyjs/react/headless';
 import 'tippy.js/dist/tippy.css';
 
-import * as searchService from '~/apiService/searchService';
+import * as searchService from '~/services/searchService';
 
 //Fontawesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
