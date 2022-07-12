@@ -56,6 +56,11 @@
   top: -8px;
 }
 
+.list-menu-item {
+  overflow-y: auto;
+  max-height: 600px;
+}
+
 .block {
   display: flex;
 }
