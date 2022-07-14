@@ -129,7 +129,7 @@ function Header() {
               />
             ) : (
               <button className={cx('more-btn')}>
-                <img className={cx('more-icon')} src={icons.more_icon} />
+                <img className={cx('more-icon')} src={icons.more_icon} alt="icon" />
               </button>
             )}
           </Menu>

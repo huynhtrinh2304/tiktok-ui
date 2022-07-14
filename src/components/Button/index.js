@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import styles from './Button.module.scss';
 
@@ -59,5 +60,20 @@ function Button({
     </Comp>
   );
 }
+
+Button.propTypes = {
+  rounded: PropTypes.bool,
+  primary: PropTypes.bool,
+  outline: PropTypes.bool,
+  btn_upload: PropTypes.bool,
+  to: PropTypes.string,
+  href: PropTypes.string,
+  small: PropTypes.string,
+  medium: PropTypes.string,
+  large: PropTypes.string,
+  disabled: PropTypes.string,
+  onClick: PropTypes.func,
+  children: PropTypes.node.isRequired,
+};
 
 export default Button;

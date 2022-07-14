@@ -30,6 +30,13 @@ function Search() {
 
   // search user
   useEffect(() => {
+    const fetchApiSearchUser = async () => {
+      setLoading(true);
+      const searchResult = await searchService.search(debounced);
+      setSearchResult(searchResult);
+      setLoading(false);
+    };
+
     if (!debounced) {
       setSearchResult([]);
       return;
@@ -45,13 +52,6 @@ function Search() {
 
   const handleHideResult = () => {
     setShowResult(false);
-  };
-
-  const fetchApiSearchUser = async () => {
-    setLoading(true);
-    const searchResult = await searchService.search(debounced);
-    setSearchResult(searchResult);
-    setLoading(false);
   };
 
   const handleChangeInputSearch = (e) => {
@@ -87,7 +87,7 @@ function Search() {
             placeholder="Search accounts and videos"
           />
 
-          {searchValue && loading == false && (
+          {searchValue && loading === false && (
             <button className={cx('clear')} onClick={() => handleClearInput()}>
               <FontAwesomeIcon icon={faCircleXmark} />
             </button>
