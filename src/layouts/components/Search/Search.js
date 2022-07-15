@@ -23,26 +23,26 @@ const cx = classNames.bind(styles);
 function Search() {
   const [searchValue, setSearchValue] = useState('');
   const [searchResult, setSearchResult] = useState([]);
-  const [showResult, setShowResult] = useState(true);
+  const [showResult, setShowResult] = useState(false);
   const [loading, setLoading] = useState(false);
   const inputSearchRef = useRef();
-  const debounced = useDebounce(searchValue, 500);
+  const debouncedValue = useDebounce(searchValue, 500);
 
   // search user
   useEffect(() => {
     const fetchApiSearchUser = async () => {
       setLoading(true);
-      const searchResult = await searchService.search(debounced);
+      const searchResult = await searchService.search(debouncedValue);
       setSearchResult(searchResult);
       setLoading(false);
     };
 
-    if (!debounced) {
+    if (!debouncedValue) {
       setSearchResult([]);
       return;
     }
     fetchApiSearchUser();
-  }, [debounced]);
+  }, [debouncedValue]);
 
   const handleClearInput = () => {
     setSearchValue('');
@@ -87,13 +87,15 @@ function Search() {
             placeholder="Search accounts and videos"
           />
 
-          {searchValue && loading === false && (
-            <button className={cx('clear')} onClick={() => handleClearInput()}>
-              <FontAwesomeIcon icon={faCircleXmark} />
-            </button>
-          )}
+          <div className={cx('block-loading-clear')}>
+            {searchValue && loading === false && (
+              <button className={cx('clear')} onClick={() => handleClearInput()}>
+                <FontAwesomeIcon icon={faCircleXmark} />
+              </button>
+            )}
 
-          {loading === true && <LoadingIcon className={cx('loading')} />}
+            {loading === true && <LoadingIcon className={cx('loading')} />}
+          </div>
 
           <span className={cx('splitter')}></span>
 

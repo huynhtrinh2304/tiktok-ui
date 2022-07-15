@@ -20,7 +20,6 @@ function Menu({ children, items = [], onChange = defaultFn }) {
   const [history, setHistory] = useState([{ data: items }]);
 
   const current = history[history.length - 1];
-  console.log(items);
 
   const renderItems = () => {
     return current.data.map((item, index) => {
@@ -42,6 +41,27 @@ function Menu({ children, items = [], onChange = defaultFn }) {
     });
   };
 
+  const renderResultMenuItem = (attrs) => (
+    <div className={cx('content')} tabIndex="-1" {...attrs}>
+      <img className={cx('arrow-tippy')} src={icons.arrow_tippy} alt={'icon'} />
+      <PopperWrapper>
+        {history.length > 1 && (
+          <Header
+            title={current.title}
+            onBack={() => {
+              setHistory((prev) => prev.slice(0, prev.length - 1));
+            }}
+          />
+        )}
+        <div className={cx('list-menu-item')}>{renderItems()}</div>
+      </PopperWrapper>
+    </div>
+  );
+
+  const handleBackFirstMenu = () => {
+    setHistory((prev) => prev.slice(0, 1));
+  };
+
   return (
     <Tippy
       offset={[10, 13]}
@@ -49,23 +69,8 @@ function Menu({ children, items = [], onChange = defaultFn }) {
       interactive
       placement="bottom-end"
       hideOnClick={false}
-      render={(attrs) => (
-        <div className={cx('content')} tabIndex="-1" {...attrs}>
-          <img className={cx('arrow-tippy')} src={icons.arrow_tippy} alt={'icon'} />
-          <PopperWrapper>
-            {history.length > 1 && (
-              <Header
-                title={current.title}
-                onBack={() => {
-                  setHistory((prev) => prev.slice(0, prev.length - 1));
-                }}
-              />
-            )}
-            <div className={cx('list-menu-item')}>{renderItems()}</div>
-          </PopperWrapper>
-        </div>
-      )}
-      onHide={() => setHistory((prev) => prev.slice(0, 1))}
+      render={renderResultMenuItem}
+      onHide={handleBackFirstMenu}
     >
       <div className={cx('block')}>{children}</div>
     </Tippy>

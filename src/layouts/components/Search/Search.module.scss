@@ -22,7 +22,7 @@
   border: 1.5px solid rgba(22, 24, 35, 0.06);
 
   input {
-    flex: 1;
+    width: 252px;
     color: var(--black);
     height: 100%;
     font-size: 1.6rem;
@@ -38,6 +38,10 @@
   &:focus-within {
     border: 1.5px solid rgba(22, 24, 35, 0.2);
   }
+}
+
+.block-loading-clear {
+  width: 40px;
 }
 
 .clear {
@@ -62,8 +66,9 @@
 .clear,
 .loading {
   display: flex;
-  position: absolute;
-  left: 52%;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
   color: rgba(22, 24, 35, 0.34);
 }
 
